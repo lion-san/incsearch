@@ -1,0 +1,8 @@
+class CustomerController < ApplicationController
+  unloadable
+
+  def index
+    @issues = Issue.group("subject").order('subject asc')
+    #”„ã‹àŠz‡H
+  end
+end

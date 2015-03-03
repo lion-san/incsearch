@@ -1,0 +1,52 @@
+<%= javascript_include_tag "suggest", :plugin => 'incsearch'  %>
+<%= javascript_include_tag "incsearch", :plugin => 'incsearch'  %>
+<%= stylesheet_link_tag 'incsearch', :plugin => 'incsearch' %>
+
+<h2>CustomerController#index</h2>
+
+  <label>Customer Name</label>
+    <input id="custName" type="text" name="pattern" value="" autocomplete="off" size="10" style="display: block">
+  <div id="suggest" style="display:none;"></div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  テスト用リスト表示
+  <div id="view_area"></div>
+
+<script>
+
+var list = [
+ <% @issues.each do |issue| %>
+  '<%= issue.subject %>',
+<% end %>
+];
+
+function startSuggest() {
+  new Suggest.Local(
+        "custName",//input id
+        "suggest", //output id 
+        list,      //customer list 
+        {dispMax: 10, interval: 1000}); //option
+}
+window.addEventListener ?
+  window.addEventListener('load', startSuggest, false) :
+  window.attachEvent('onload', startSuggest);
+
+
+
+function startIncSearch() {
+  new IncSearch.ViewList(
+    'custName',      //
+    'view_area', //
+    list,        //
+    {dispMax: 10, interval: 1000}); // 
+}
+window.addEventListener ?
+  window.addEventListener('load', startIncSearch, false) :
+  window.attachEvent('onload', startIncSearch);
+</script>
