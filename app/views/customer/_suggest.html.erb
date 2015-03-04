@@ -67,12 +67,13 @@ catch(e)
 
 
 function startSuggest() {
-  new Suggest.Local(
+//  new Suggest.Local(//single
+  new Suggest.LocalMulti(//multi
         //"custName",//input id
         fieldId,//input id
         "suggest", //output id 
         list,      //customer list 
-        {dispMax: 10, interval: 1000}); //option
+        {dispMax: 20, interval: 1000, highlight: true}); //option
 }
 
 
