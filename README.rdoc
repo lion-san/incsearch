@@ -1,12 +1,12 @@
 = incsearch
 
-Description goes here
+Redmine用の入力項目に対し、インクリメンタルサーチ機能を提供します。
 
 1 インストール方法
 
 [redmine_インストールディレクトリ]\\plugins\\incsearch配下に、本ファイルを展開してください。
 
- 例）redmine\\plugins\\incsearch\\app...
+ 例）redmine\plugins\incsearch\app...
 
 
 2  確認方法
