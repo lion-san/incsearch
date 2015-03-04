@@ -18,7 +18,9 @@ Description goes here
 3  動作仕様
 
 カスタムフィールドの項目名に依存しています。
+
 条件１．カスタムフィールド名が"A1."で始まる項目
+
 条件２．Redmine生成の画面項目ID="issue_custom_field_values_1"
 
 もし、Redmineの項目名等をメンテした場合、上記変更対応が必要になります。
