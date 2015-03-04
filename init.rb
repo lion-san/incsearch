@@ -3,5 +3,5 @@ Redmine::Plugin.register :incsearch do
   name 'Incsearch plugin'
   author 'Shinya Yokoi'
   description 'Redmine with incremental search'
-  version '0.9.2'
+  version '0.9.3'
 end
