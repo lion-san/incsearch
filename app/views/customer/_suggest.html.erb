@@ -2,23 +2,57 @@
 <%= javascript_include_tag "incsearch", :plugin => 'incsearch'  %>
 <%= stylesheet_link_tag 'incsearch', :plugin => 'incsearch' %>
 
+
+
   <!--label>Customer Name</label>
-    <input id="custName" type="text" name="pattern" value="" autocomplete="off" size="10" style="display: block" -->
+    <input id="custName" type="text" name="pattern" value=" autocomplete="off" size="10" style="display: block" -->
   <div id="suggest" style="display:none; position:absolute;"></div>
 
   Test list view.
   <div id="view_area"></div>
 
 <script>
+//list id for Suggestion
+var fieldId = 'issue_custom_field_values_1';
 
 var list = [
   'toyota', 'nissan', 'subaru'
 ];
 
 
+var request = new XMLHttpRequest();
+  request.open("GET", "/incsearch.json");
+  request.onreadystatechange = function() {
+    if (request.readyState == 4 && request.status == 200) {
+      var text = document.createTextNode(decodeURI(request.responseText));
+
+      //PARSE
+      var json = JSON.parse( text.data );
+      list = new Array();
+
+      var i;
+      for(i = 0; i < json.length; i++){
+        list.push(json[i]);
+      }
+
+     /* window.addEventListener ?
+      window.addEventListener('load', startSuggest, false) :
+      window.attachEvent('onload', startSuggest);
+
+      window.addEventListener ?
+      window.addEventListener('load', startIncSearch, false) :
+      window.attachEvent('onload', startIncSearch);
+      */
+
+      startSuggest(); 
+      startIncSearch(); 
+
+    }
+  }
+request.send("");
 
 var position = document.getElementById("suggest");
-var refPosition = document.getElementById("issue_subject");
+var refPosition = document.getElementById(fieldId);
 
 try
   {
@@ -35,26 +69,20 @@ catch(e)
 function startSuggest() {
   new Suggest.Local(
         //"custName",//input id
-        "issue_subject",//input id
+        fieldId,//input id
         "suggest", //output id 
         list,      //customer list 
         {dispMax: 10, interval: 1000}); //option
 }
-window.addEventListener ?
-  window.addEventListener('load', startSuggest, false) :
-  window.attachEvent('onload', startSuggest);
 
 
 
 function startIncSearch() {
   new IncSearch.ViewList(
     //"custName",//input id
-    "issue_subject",//input id
+    fieldId,//input id
     'view_area', //
     list,        //
     {dispMax: 10, interval: 1000}); // 
 }
-window.addEventListener ?
-  window.addEventListener('load', startIncSearch, false) :
-  window.attachEvent('onload', startIncSearch);
 </script>

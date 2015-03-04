@@ -2,6 +2,8 @@
 <%= javascript_include_tag "incsearch", :plugin => 'incsearch'  %>
 <%= stylesheet_link_tag 'incsearch', :plugin => 'incsearch' %>
 
+<% piyo %>
+
 <h2>CustomerController#index</h2>
 
   <label>Customer Name</label>
@@ -21,8 +23,8 @@
 <script>
 
 var list = [
- <% @issues.each do |issue| %>
-  '<%= issue.subject %>',
+ <% @companies.each do |issue| %>
+  '<%= issue %>',
 <% end %>
 ];
 

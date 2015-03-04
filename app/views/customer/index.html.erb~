@@ -2,6 +2,8 @@
 <%= javascript_include_tag "incsearch", :plugin => 'incsearch'  %>
 <%= stylesheet_link_tag 'incsearch', :plugin => 'incsearch' %>
 
+<% piyo %>
+
 <h2>CustomerController#index</h2>
 
   <label>Customer Name</label>
@@ -15,14 +17,14 @@
   <br>
   <br>
   <br>
-  テスト用リスト表示
+  Test list view.
   <div id="view_area"></div>
 
 <script>
 
 var list = [
- <% @issues.each do |issue| %>
-  '<%= issue.subject %>',
+ <% @companies.each do |issue| %>
+  '<%= issue.value %>',
 <% end %>
 ];
 
