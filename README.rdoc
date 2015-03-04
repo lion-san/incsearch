@@ -6,8 +6,7 @@ Description goes here
 
 [redmine_インストールディレクトリ]\\plugins\\incsearch配下に、本ファイルを展開してください。
 
-例）redmine\\plugins\\incsearch\\app..
-                             \\init.rb
+例）redmine\\plugins\\incsearch\\app...
 
 
 2  確認方法
