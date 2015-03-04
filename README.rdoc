@@ -2,7 +2,7 @@
 
 Description goes here
 
-1. インストール方法
+1 インストール方法
 
 [redmine_インストールディレクトリ]\\plugins\\incsearch配下に、本ファイルを展開してください。
 
@@ -10,14 +10,13 @@ Description goes here
                              \\init.rb
 
 
-2. 確認方法
-
-http://[redmineserver]/admin/plugins
+2  確認方法
+ http://[redmineserver]/admin/plugins
 
 にてプラグインがインストールされたか確認できます。
 
 
-3. 動作仕様
+3  動作仕様
 
 カスタムフィールドの項目名に依存しています。
 条件１．カスタムフィールド名が"A1."で始まる項目
@@ -25,8 +24,8 @@ http://[redmineserver]/admin/plugins
 
 もし、Redmineの項目名等をメンテした場合、上記変更対応が必要になります。
 対象ファイル2：
-app\\controllers\\customer_controller.rb
-app\\views\customer\\_suggest.html.erb
+ app\controllers\customer_controller.rb
+ app\views\customer\_suggest.html.erb
 
 4.利用しているリスト表示エンジン
-http://www.enjoyxstudy.com/javascript/suggest/
+ http://www.enjoyxstudy.com/javascript/suggest/
