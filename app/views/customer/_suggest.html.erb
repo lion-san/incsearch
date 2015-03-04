@@ -1,7 +1,20 @@
 <%= javascript_include_tag "suggest", :plugin => 'incsearch'  %>
 <%= javascript_include_tag "incsearch", :plugin => 'incsearch'  %>
 <%= stylesheet_link_tag 'incsearch', :plugin => 'incsearch' %>
+<% 
+    issues = Issue.all
+    @companies = Array.new
 
+    issues.each do |issue|
+      company = issue.custom_field_values.detect{|c| c.custom_field.name[0, 3] == "A1."}
+
+      if !company.value.nil?
+        @companies.push( company.value )
+      end
+    end
+    #Distinct
+    @companies.uniq!
+%>
 
 
   <!--label>Customer Name</label>
@@ -16,11 +29,11 @@
 var fieldId = 'issue_custom_field_values_1';
 
 var list = [
-  'toyota', 'nissan', 'subaru'
+<% @companies.each do |c| %>
+  '<%= c %>',
+<% end %>
 ];
-
-
-var request = new XMLHttpRequest();
+/*var request = new XMLHttpRequest();
   request.open("GET", "/incsearch.json");
   request.onreadystatechange = function() {
     if (request.readyState == 4 && request.status == 200) {
@@ -43,13 +56,13 @@ var request = new XMLHttpRequest();
       window.addEventListener('load', startIncSearch, false) :
       window.attachEvent('onload', startIncSearch);
       */
-
+/*
       startSuggest(); 
       startIncSearch(); 
 
     }
-  }
-request.send("");
+  }*/
+//request.send("");
 
 var position = document.getElementById("suggest");
 var refPosition = document.getElementById(fieldId);
@@ -86,4 +99,12 @@ function startIncSearch() {
     list,        //
     {dispMax: 10, interval: 1000}); // 
 }
+
+      window.addEventListener ?
+      window.addEventListener('load', startSuggest, false) :
+      window.attachEvent('onload', startSuggest);
+
+      window.addEventListener ?
+      window.addEventListener('load', startIncSearch, false) :
+      window.attachEvent('onload', startIncSearch);
 </script>
