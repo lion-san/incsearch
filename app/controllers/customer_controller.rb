@@ -3,19 +3,16 @@ class CustomerController < ApplicationController
   unloadable
 
   def index
-    #@issues = Issue.group("subject").order('subject asc')
-    issues = Issue.all
-    @companies = Array.new
+    companies = CustomValue.find_all_by_custom_field_id(1)
+    @companies = Array.new 
+    
 
-    issues.each do |issue|
-      company = issue.custom_field_values.detect{|c| c.custom_field.name[0, 3] == "A1."}
-
+    companies.each do |company|
       if !company.value.nil?
         @companies.push( company.value )
       end
     end
-    #”„ã‹àŠz‡H
-    
+
     #Distinct
     @companies.uniq!
 

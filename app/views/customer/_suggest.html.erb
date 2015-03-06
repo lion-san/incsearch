@@ -2,16 +2,16 @@
 <%= javascript_include_tag "incsearch", :plugin => 'incsearch'  %>
 <%= stylesheet_link_tag 'incsearch', :plugin => 'incsearch' %>
 <% 
-    issues = Issue.all
-    @companies = Array.new
+    companies = CustomValue.find_all_by_custom_field_id(1)
+    @companies = Array.new 
+    
 
-    issues.each do |issue|
-      company = issue.custom_field_values.detect{|c| c.custom_field.name[0, 3] == "A1."}
-
+    companies.each do |company|
       if !company.value.nil?
         @companies.push( company.value )
       end
     end
+
     #Distinct
     @companies.uniq!
 %>
@@ -20,19 +20,36 @@
   <!--label>Customer Name</label>
     <input id="custName" type="text" name="pattern" value=" autocomplete="off" size="10" style="display: block" -->
   <div id="suggest" style="display:none; position:absolute;"></div>
+  <label for="issue_custom_field_values_1" style="display:none; position:absolute;"></label>
 
-  Test list view.
   <div id="view_area"></div>
 
 <script>
 //list id for Suggestion
 var fieldId = 'issue_custom_field_values_1';
 
-var list = [
+//var list = [
 <% @companies.each do |c| %>
-  '<%= c %>',
+  '<% c %>',
 <% end %>
-];
+//];
+
+
+$( function (){
+  var data = [
+<% @companies.each do |c| %>
+    { label:'<%= c %>', value:'<%= c %>'},
+<% end %>
+  ];
+
+$( '#issue_custom_field_values_1' ).autocomplete({
+  source: data,
+  delay: 500,
+  minLength: 1,
+  autoFocus: true
+});
+});
+
 /*var request = new XMLHttpRequest();
   request.open("GET", "/incsearch.json");
   request.onreadystatechange = function() {
@@ -63,7 +80,7 @@ var list = [
     }
   }*/
 //request.send("");
-
+/*
 var position = document.getElementById("suggest");
 var refPosition = document.getElementById(fieldId);
 
@@ -106,5 +123,5 @@ function startIncSearch() {
 
       window.addEventListener ?
       window.addEventListener('load', startIncSearch, false) :
-      window.attachEvent('onload', startIncSearch);
+      window.attachEvent('onload', startIncSearch);*/
 </script>

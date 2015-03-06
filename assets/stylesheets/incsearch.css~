@@ -1,9 +1,26 @@
+strong {
+  font-weight: normal;
+}
+strong.high1 {
+  background-color: #FFFF99
+}
+strong.high2 {
+  background-color: #CCFFFF;
+}
+strong.high3 {
+  background-color: #CCFF99;
+}
+strong.high4 {
+  background-color: #FFCC99;
+}
+
 #suggest {
     position: absolute;
     background-color: #FFFFFF;
     border: 1px solid #CCCCFF;
     font-size: 90%;
     width: 200px;
+    z-index: 2;
 }
 #suggest div {
     display: block;
