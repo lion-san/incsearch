@@ -22,7 +22,7 @@ Redmine用の入力項目に対し、インクリメンタルサーチ機能を�
 条件．Redmine生成の画面項目ID="issue_custom_field_values_1"
 
 もし、Redmineの項目名等をメンテした場合、上記変更対応が必要になります。
-対象ファイル2：
+対象ファイル：
  app\views\customer\_suggest.html.erb
 
 4.利用しているリスト表示エンジン
