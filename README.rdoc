@@ -19,14 +19,13 @@ Redmine用の入力項目に対し、インクリメンタルサーチ機能を�
 
 カスタムフィールドの項目名に依存しています。
 
-条件１．カスタムフィールド名が"A1."で始まる項目
-
-条件２．Redmine生成の画面項目ID="issue_custom_field_values_1"
+条件．Redmine生成の画面項目ID="issue_custom_field_values_1"
 
 もし、Redmineの項目名等をメンテした場合、上記変更対応が必要になります。
 対象ファイル2：
- app\controllers\customer_controller.rb
  app\views\customer\_suggest.html.erb
 
 4.利用しているリスト表示エンジン
  http://www.enjoyxstudy.com/javascript/suggest/
+
+ →JQueryに変更しました。(2015/3/6)
